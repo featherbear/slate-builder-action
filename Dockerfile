@@ -15,6 +15,8 @@ COPY index.html.md /usr/src
 
 RUN apk --no-cache --update add nodejs g++ make coreutils git zip && \
     git clone https://github.com/lord/slate.git /usr/src/app && \
+    sed -i s/unique_head\.rb/nesting_unique_head\.rb/ config.rb && \
+    sed -i s/UniqueHeadCounter/NestingUniqueHeadCounter/ config.rb && \
     bundle install && \
     chmod +x /usr/src/scripts/*.sh
 
